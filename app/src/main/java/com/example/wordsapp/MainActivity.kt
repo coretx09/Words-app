@@ -48,8 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun chooseLayout() {
         if (isLinearLayoutManager) {
             recyclerView.layoutManager = LinearLayoutManager(this)
-        }
-        else {
+        } else {
             recyclerView.layoutManager = GridLayoutManager(this, 4)}
         recyclerView.adapter = LetterAdapter()
     }
@@ -59,10 +58,12 @@ class MainActivity : AppCompatActivity() {
         if (menuItem == null)
             return
 
-        menuItem.icon =
-            if (isLinearLayoutManager) {
-                ContextCompat.getDrawable(this, R.drawable.ic_grid_layout)}
-            else { ContextCompat.getDrawable(this, R.drawable.ic_linear_layout)}
+        if (isLinearLayoutManager) {
+            menuItem.icon = ContextCompat.getDrawable(this, R.drawable.ic_grid_layout)
+        }
+        else {
+            menuItem.icon = ContextCompat.getDrawable(this, R.drawable.ic_linear_layout)
+        }
     }
 
     /*où vous inflate(gonfler) le menu des options et effectuez toute configuration supplémentaire**/
@@ -79,7 +80,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {
-                isLinearLayoutManager != isLinearLayoutManager
+                isLinearLayoutManager = !isLinearLayoutManager
                 chooseLayout()
                 setIcon(item)
                 return true
