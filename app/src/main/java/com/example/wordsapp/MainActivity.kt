@@ -16,7 +16,10 @@
 package com.example.wordsapp
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,11 +38,56 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         recyclerView = binding.recyclerView
-        // Sets the LinearLayoutManager of the recyclerview
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        //recyclerView.layoutManager = GridLayoutManager(this, 3)
+        chooseLayout()
+
+
+        }
+
+    private var isLinearLayoutManager = true
+
+    private fun chooseLayout() {
+        if (isLinearLayoutManager) {
+            recyclerView.layoutManager = LinearLayoutManager(this)
+        }
+        else {
+            recyclerView.layoutManager = GridLayoutManager(this, 4)}
         recyclerView.adapter = LetterAdapter()
     }
 
+    /**L'icône est définie de manière conditionnelle en fonction de la isLinearLayoutManager property.**/
+    private fun setIcon(menuItem: MenuItem?) {
+        if (menuItem == null) {
+            return
+        menuItem?.icon =
+            if (isLinearLayoutManager)
+                ContextCompat.getDrawable(this, R.drawable.ic_grid_layout)
+            else
+                ContextCompat.getDrawable(this, R.drawable.ic_linear_layout)
+
+        }
+    }
+
+    /*où vous inflate(gonfler) le menu des options et effectuez toute configuration supplémentaire**/
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.layout_menu, menu)
+        val layoutButton = menu?.findItem(R.id.action_switch_layout)
+        // call setIcon pour s'assurer que icon est correct, en fonction de la mise en page
+        setIcon(layoutButton)
+        // true ici puisque vous voulez que le menu d'options soit créé
+        return true
+    }
+
+    // C'est ce qu'on appelle chaque fois qu'un item de menu est touché
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_switch_layout -> {
+                isLinearLayoutManager != isLinearLayoutManager
+                chooseLayout()
+                setIcon(item)
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
 }
