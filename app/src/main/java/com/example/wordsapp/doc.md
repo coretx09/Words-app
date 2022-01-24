@@ -18,6 +18,8 @@ Il existe deux types d'intentions : _implicit_ et _explicits_ .
 
  ## INTENTS EXPLICIT:
 Est très spécifique, où vous connaissez l'activité exacte à lancer, souvent un écran dans votre propre application.
+ Intent(Context, Class)
+ Executed in an Activity, so 'this' is the Context
 
  ## INTENTS IMPLICIT:
 Est un peu plus abstraite, lorsque vous indiquez au système le type d'action, comme _ouvrir un lien_,
@@ -49,4 +51,18 @@ régler une alarme en arrière-plan
 
 ### Intent.ACTION_DIAL:
 lancer un appel téléphonique
+
+## Pour exécuter une intention :
+1. Obtenez une référence au contexte.
+2. Créez un Intent objet fournissant un type d'activité ou d'intention (selon qu'il est explicite ou implicite).
+3. Transmettez toutes les données nécessaires en appelant putExtra().
+4. Appel startActivity() passant dans l' intent objet.
+
+
+
+# SET UP MENU AND ICONS
+Les options de menu vous permettent d'ajouter des boutons et des menus à la barre d'applications.
+Définissez le type de ressource sur Menu et le nom de fichier sur layout_menu.
+
+
 
