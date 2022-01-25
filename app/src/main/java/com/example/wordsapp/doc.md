@@ -44,7 +44,7 @@ lancer l'application de cartes
 lancer l'application de messagerie
 
 ### Intent.CATEGORY_APP_GALLERY:
-lancement de l'application galerie (photos)
+lancement de l'application galerie (photos)Un fragment est simplement un élément réutilisable de l'interface utilisateur de votre application. 
 
 ### Intent.ACTION_SET_ALARM: 
 régler une alarme en arrière-plan
