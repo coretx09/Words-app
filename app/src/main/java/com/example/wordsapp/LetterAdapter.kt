@@ -69,7 +69,7 @@ class LetterAdapter :
             // obtention d'une référence au context, pour Intent.
             val context = holder.view.context
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(LETTER, holder.button.text.toString())
+            intent.putExtra(WorldListFragment.LETTER, holder.button.text.toString())
             context.startActivity(intent)
         }
     }

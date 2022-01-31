@@ -44,4 +44,12 @@ La seule autre chose à noter est qu'il existe quelques différences subtiles av
 lorsque vous travaillez avec des fragments. Alors que la Activity classe a une propriété globale appelée [menuInflater],
 Fragment n'a pas cette propriété. Le gonfleur de menu est plutôt passé dans [onCreateOptionsMenu()]. 
 Notez également que la [onCreateOptionsMenu()] utilisée avec les fragments ne nécessite pas d'instruction de [return]. 
+
+## Context:
+contrairement à une activité, un fragment n'est pas un fichier Context. Vous ne pouvez pas transmettre [this]
+(en référence à l'objet fragment) comme contexte du gestionnaire de disposition. 
+Cependant, les fragments fournissent une [context] propriété que vous pouvez utiliser à la place
+
+## Intent:
+les fragments n'ont pas de [intent] propriété et ne devraient normalement pas accéder à l'intention de l'activité parente
   

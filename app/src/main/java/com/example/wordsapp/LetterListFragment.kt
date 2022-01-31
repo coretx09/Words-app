@@ -23,7 +23,8 @@ class LetterListFragment : Fragment() {
     private var isLinearLayoutManager = true
 
     /* Ici, get() signifie que cette propriété est "get-only". Cela signifie que vous pouvez obtenir
-la valeur, mais une fois attribuée (comme c'est le cas ici), vous ne pouvez pas l'attribuer à autre chose. */
+la valeur, mais une fois attribuée (comme c'est le cas ici), vous ne pouvez pas l'attribuer à autre chose.
+afin de pouvoir référencer des views sans avoir à utiliser ? (!!)*/
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +53,6 @@ la valeur, mais une fois attribuée (comme c'est le cas ici), vous ne pouvez pas
         super.onDestroyView()
         _binding = null
     }
-
 
 
     private fun chooseLayout() {
