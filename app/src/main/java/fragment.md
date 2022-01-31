@@ -49,6 +49,7 @@ Notez également que la [onCreateOptionsMenu()] utilisée avec les fragments ne 
 contrairement à une activité, un fragment n'est pas un fichier Context. Vous ne pouvez pas transmettre [this]
 (en référence à l'objet fragment) comme contexte du gestionnaire de disposition. 
 Cependant, les fragments fournissent une [context] propriété que vous pouvez utiliser à la place
+[requireContext()] renvoie le Context fragment auquel ce fragment est actuellement associé.
 
 ## Intent:
 les fragments n'ont pas de [intent] propriété et ne devraient normalement pas accéder à l'intention de l'activité parente
