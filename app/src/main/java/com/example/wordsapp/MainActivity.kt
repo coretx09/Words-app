@@ -16,22 +16,18 @@
 package com.example.wordsapp
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.wordsapp.databinding.ActivityMainBinding
 
 /**
  * Main Activity and entry point for the app. Displays a RecyclerView of letters.
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var recyclerView: RecyclerView
 
-    private var isLinearLayoutManager = true
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,54 +35,20 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*recyclerView = binding.recyclerView
-        chooseLayout()*/
+        // Reference fragmentContainerView
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
 
-        }
-
-/*
-    private fun chooseLayout() {
-        if (isLinearLayoutManager) {
-            recyclerView.layoutManager = LinearLayoutManager(this)
-        } else {
-            recyclerView.layoutManager = GridLayoutManager(this, 4)}
-        recyclerView.adapter = LetterAdapter()
+        // Cela garantit que les boutons de la barre d'action (barre d'application), comme l'option de menu dans LetterListFragmentsont visibles.
+        setupActionBarWithNavController(navController)
     }
 
-    /**L'icône est définie de manière conditionnelle en fonction de la isLinearLayoutManager property.**/
-    private fun setIcon(menuItem: MenuItem?) {
-        if (menuItem == null)
-            return
+    //short-circuit evaluation
 
-        if (isLinearLayoutManager) {
-            menuItem.icon = ContextCompat.getDrawable(this, R.drawable.ic_grid_layout)
-        }
-        else {
-            menuItem.icon = ContextCompat.getDrawable(this, R.drawable.ic_linear_layout)
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    /*où vous inflate(gonfler) le menu des options et effectuez toute configuration supplémentaire**/
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.layout_menu, menu)
-        val layoutButton = menu?.findItem(R.id.action_switch_layout)
-        // call setIcon pour s'assurer que icon est correct, en fonction de la mise en page
-        setIcon(layoutButton)
-        // true ici puisque vous voulez que le menu d'options soit créé
-        return true
-    }
 
-    // C'est ce qu'on appelle chaque fois qu'un item de menu est touché
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_switch_layout -> {
-                isLinearLayoutManager = !isLinearLayoutManager
-                chooseLayout()
-                setIcon(item)
-                return true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-*/
 }

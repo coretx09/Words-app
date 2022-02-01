@@ -20,8 +20,14 @@ class WorldListFragment : Fragment() {
     // get-only
     private val binding get() = _binding
 
+    private lateinit var letterId: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Retrieve the LETTER from the Fragment arguments
+        arguments?.let {
+            letterId = it.getString(LETTER).toString()
+        }
 
     }
 
@@ -29,15 +35,13 @@ class WorldListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Retrieve & Inflate the layout for this fragment
         _binding = FragmentWorldListBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        //Pour l'instant, vous vous référez à activity.intent (plutôt qu'à intent)
-        val letterId = activity?.intent?.extras?.getString(LETTER).toString()
         val recyclerView = binding?.recyclerView
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
         recyclerView?.adapter = WordAdapter(letterId, requireContext())

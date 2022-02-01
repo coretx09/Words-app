@@ -53,4 +53,7 @@ Cependant, les fragments fournissent une [context] propriété que vous pouvez u
 
 ## Intent:
 les fragments n'ont pas de [intent] propriété et ne devraient normalement pas accéder à l'intention de l'activité parente
+
+#fragment Labels:
+Vous pouvez définir l'étiquette de chaque fragment sur le graphique de navigation.
   
