@@ -35,7 +35,8 @@ un plugin Gradle qui vous aidera avec la sécurité de type lors de la transmiss
 
 # Using the Navigation Graph
 Navigation Component fait simplement référence à l'ensemble des outils permettant de mettre en œuvre la navigation, notamment entre fragment.
- #FragmentContainerView 
+ 
+#FragmentContainerView 
 [app:defaultNavHost="true"] attribut, Cela permet au container de fragments d'interagir avec la hiérarchie de navigation.
 
  #Configuration NavGraph 
@@ -47,7 +48,7 @@ Ajoutez un fichier graphique de navigation ( Fichier > Nouveau > Fichier de ress
 passez votre souris sur la [letterListFragment] destination et faites glisser le cercle qui apparaît à droite sur la [wordListFragment] destination.
 
 # Argument Destination
-Sélectionnez une [destination] (WordListFragment) et dans le volet des attributs, sous [Arguments] , cliquez sur le bouton plus pour créer un nouvel argument.
+Sélectionnez une [destination] (WordListFragment ) et dans le volet des attributs, sous [Arguments] , cliquez sur le bouton plus pour créer un nouvel argument.
 L'argument doit être appelé [letter] et le type doit être [String]. C'est là qu'intervient le [plug-in Safe Args] que vous avez ajouté précédemment.
 La spécification de cet argument sous forme de chaîne garantit qu'un String sera attendu lorsque votre action de navigation sera effectuée dans le code.
 
