@@ -1,4 +1,5 @@
 # Words App
+![navigation](https://user-images.githubusercontent.com/64100648/190927563-4e54f204-2c02-462d-99cd-b7d04470d963.png)
 
 This folder contains the source code for the Words app codelab.
 
