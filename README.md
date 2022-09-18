@@ -1,5 +1,5 @@
 # Words App
-
+![](../FLOWCHARTS/navigation.png)
 This folder contains the source code for the Words app codelab.
 
 
